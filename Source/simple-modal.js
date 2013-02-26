@@ -54,6 +54,7 @@ var SimpleModal = new Class({
     options: {
         onAppend:      Function, // callback inject in DOM
         offsetTop:     40,
+        offsetLeft:     null,
         overlayOpacity:.3,
         overlayColor:  "#000000",
         width:         400,
@@ -417,9 +418,10 @@ var SimpleModal = new Class({
       // Update position popup
       try{
         var offsetTop = this.options.offsetTop || 0; //this.options.offsetTop != null ? this.options.offsetTop : window.getScroll().y;
+        var offsetLeft = this.options.offsetLeft || ((window.getCoordinates().width - $("simple-modal").getCoordinates().width)/2 );
         $("simple-modal").setStyles({
           top: offsetTop,
-          left: ((window.getCoordinates().width - $("simple-modal").getCoordinates().width)/2 )
+          left: offsetLeft
         });
       } catch(err){}
  		  return;
